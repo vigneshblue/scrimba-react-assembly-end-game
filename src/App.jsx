@@ -2,9 +2,20 @@ import { useState } from 'react'
 import { languages } from './data/languages'
 
 function App() {
-
-  const languageElements = languages.map(language => (
-    <span style={{backgroundColor:language.backgroundColor, color:language.color}}>{language.name}</span>
+  const [currentWord, setCurrentWord] = useState('react')
+  const languageElements = languages.map(language => {
+    const styles = {backgroundColor:language.backgroundColor, color:language.color}
+    return (
+      <span 
+        key={language.name}
+        style={styles}
+      >
+        {language.name}
+      </span>
+    )
+  })
+  const currentWordElements = [...currentWord].map((char, index) => (
+    <span key={index}>{char.toUpperCase()}</span>
   ))
   return (
     <main>
@@ -18,6 +29,9 @@ function App() {
       </section>
       <section className="languages">
         {languageElements}
+      </section>
+      <section className="current-word">
+        {currentWordElements}
       </section>
     </main>
   )
