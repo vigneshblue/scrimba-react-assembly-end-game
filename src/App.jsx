@@ -3,6 +3,9 @@ import { languages } from './data/languages'
 
 function App() {
   const [currentWord, setCurrentWord] = useState('react')
+
+  const alphabets = "abcdefghijklmnopqrstuwxyz"
+
   const languageElements = languages.map(language => {
     const styles = {backgroundColor:language.backgroundColor, color:language.color}
     return (
@@ -14,9 +17,15 @@ function App() {
       </span>
     )
   })
+
   const currentWordElements = [...currentWord].map((char, index) => (
     <span key={index}>{char.toUpperCase()}</span>
   ))
+
+  const keyboardElements = [...alphabets].map(letter => (
+    <button key={letter}>{letter.toUpperCase()}</button>
+  ))
+
   return (
     <main>
       <header>
@@ -33,6 +42,10 @@ function App() {
       <section className="current-word">
         {currentWordElements}
       </section>
+      <section className="keyboard">
+        {keyboardElements}
+      </section>
+      <button className="new-game">New Game</button>"
     </main>
   )
 }
