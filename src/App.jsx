@@ -94,6 +94,11 @@ function App() {
     }
   }
 
+  function resetGame() {
+    setCurrentWord(randomWord)
+    setGuessedLetters([])
+  }
+
   return (
     <main>
       <header>
@@ -112,7 +117,7 @@ function App() {
       <section className="keyboard">
         {keyboardElements}
       </section>
-      {isGameOver && <button className="new-game">New Game</button>}
+      {isGameOver && <button className="new-game" onClick={resetGame}>New Game</button>}
     </main>
   )
 }
