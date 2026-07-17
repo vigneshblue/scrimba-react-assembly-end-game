@@ -21,10 +21,12 @@ function App() {
     })
   }
 
-  const languageElements = languages.map(language => {
+  const languageElements = languages.map((language, index) => {
     const styles = {backgroundColor:language.backgroundColor, color:language.color}
+    const className = index < wrongGuessCount ? "lost" : ""
     return (
       <span 
+        className={className}
         key={language.name}
         style={styles}
       >
