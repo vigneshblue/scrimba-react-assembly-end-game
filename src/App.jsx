@@ -10,6 +10,10 @@ function App() {
   const alphabets = "abcdefghijklmnopqrstuwxyz"
   // Derived values
   const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
+  const isGameWon = [...currentWord].every(letter => guessedLetters.includes(letter))
+  const isGameLost = wrongGuessCount >= languages.length - 1
+  const isGameOver = isGameWon || isGameLost
+    
   
   function addGuessedLetter(letter) {
     setGuessedLetters(prevLetters => {
@@ -75,7 +79,7 @@ function App() {
       <section className="keyboard">
         {keyboardElements}
       </section>
-      <button className="new-game">New Game</button>"
+      {isGameOver && <button className="new-game">New Game</button>}
     </main>
   )
 }
