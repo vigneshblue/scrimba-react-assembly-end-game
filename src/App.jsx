@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { languages } from './data/languages'
-import { getFarewellText } from './data/util';
+import { getFarewellText, randomWord } from './data/util';
 import { clsx } from 'clsx';
 
 function App() {
   // State values
-  const [currentWord, setCurrentWord] = useState('react')
+  const [currentWord, setCurrentWord] = useState(() => randomWord())
   const [guessedLetters, setGuessedLetters] = useState([])
-
   // Static values
   const alphabets = "abcdefghijklmnopqrstuwxyz"
   // Derived values
