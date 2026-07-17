@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { languages } from './data/languages'
+import { getFarewellText } from './data/util';
 import { clsx } from 'clsx';
 
 function App() {
   // State values
   const [currentWord, setCurrentWord] = useState('react')
   const [guessedLetters, setGuessedLetters] = useState([])
+
   // Static values
   const alphabets = "abcdefghijklmnopqrstuwxyz"
   // Derived values
@@ -13,6 +15,8 @@ function App() {
   const isGameWon = [...currentWord].every(letter => guessedLetters.includes(letter))
   const isGameLost = wrongGuessCount >= languages.length - 1
   const isGameOver = isGameWon || isGameLost
+  const lastGussedLetter = guessedLetters[guessedLetters.length - 1]
+  const isLastGuessedIncorrect = lastGussedLetter && !currentWord.includes(lastGussedLetter)
     
   
   function addGuessedLetter(letter) {
@@ -28,6 +32,7 @@ function App() {
   const languageElements = languages.map((language, index) => {
     const styles = {backgroundColor:language.backgroundColor, color:language.color}
     const className = index < wrongGuessCount ? "lost" : ""
+    
     return (
       <span 
         className={className}
@@ -53,6 +58,7 @@ function App() {
     })
     return <button 
       key={letter}
+      disabled={isGameOver}
       className={className}
       onClick={() => addGuessedLetter(letter)}
     >
@@ -60,15 +66,43 @@ function App() {
     </button>
   })
 
+  const gameStatusClass = clsx("game-status", {
+    won: isGameWon,
+    lost: isGameLost,
+    farewell: !isGameOver && isLastGuessedIncorrect
+  })
+
+  function renderGameStatus() {
+    if (!isGameOver && isLastGuessedIncorrect) {
+      return <p className="farewell-message">{getFarewellText(languages[wrongGuessCount-1].name)}</p>
+    }
+
+    if (isGameWon) {
+      return (
+        <>
+          <h2>You win!</h2>
+          <p>Well done! 🎉</p>
+        </>
+      )
+    }
+    if (isGameLost) {
+      return (
+        <>
+          <h2>Game over!</h2>
+          <p>You lose! Better start learning Assembly 😭</p>
+      </>
+      )
+    }
+  }
+
   return (
     <main>
       <header>
         <h1>Assembly: Endgame</h1>
         <p>Guess the word within 8 attempts to keep the programming world safe from Assembly!</p>
       </header>
-      <section className="game-status">
-        <h2>You win!</h2>
-        <p>Well done! 🎉</p>
+      <section className={gameStatusClass}>
+        {renderGameStatus()}
       </section>
       <section className="languages">
         {languageElements}
