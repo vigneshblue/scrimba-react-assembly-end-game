@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { languages } from './data/languages'
 import { getFarewellText, randomWord } from './data/util';
 import { clsx } from 'clsx';
+import Confetti from 'react-confetti'
 
 function App() {
   // State values
@@ -44,7 +45,9 @@ function App() {
   })
 
   const currentWordElements = [...currentWord].map((letter, index) => {
-    return <span key={index}>{guessedLetters.includes(letter) ? letter.toUpperCase() : ""}</span>
+    const showLetter = guessedLetters.includes(letter) || isGameLost
+    const className = clsx(isGameLost && !guessedLetters.includes(letter) && "missed-letter")
+    return <span className={className} key={index}>{showLetter ? letter.toUpperCase() : ""}</span>
 })
 
   const keyboardElements = [...alphabets].map(letter => {
