@@ -3,12 +3,14 @@ import { languages } from './data/languages'
 import { clsx } from 'clsx';
 
 function App() {
+  // State values
   const [currentWord, setCurrentWord] = useState('react')
   const [guessedLetters, setGuessedLetters] = useState([])
+  // Static values
   const alphabets = "abcdefghijklmnopqrstuwxyz"
-
-  console.log(guessedLetters)
-
+  // Derived values
+  const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
+  
   function addGuessedLetter(letter) {
     setGuessedLetters(prevLetters => {
       if (prevLetters.includes(letter)) {
