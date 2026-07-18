@@ -1,16 +1,129 @@
-# React + Vite
+# Assembly: Endgame 🎮
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A word guessing game built with **React** as part of the **Learn React** course by **Scrimba**.
 
-Currently, two official plugins are available:
+The objective is simple: guess the hidden word one letter at a time before you run out of attempts. The project focuses on applying modern React concepts by building a complete interactive application from scratch.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Demo
+https://assembly-endgame-vigneshblue.vercel.app/
 
-## React Compiler
+## 📸 Screenshot
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Win State
 
-## Expanding the Oxlint configuration
+![Won](./src/assets/game-won.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Lose State
+
+![Lost](./src/assets/game-lost.png)
+
+---
+
+## ✨ Features
+
+- Interactive word guessing game
+- Random word selection
+- Tracks correct and incorrect guesses
+- Visual keyboard with disabled guessed letters
+- Win and lose game states
+- New Game functionality
+- Responsive UI
+- Accessibility improvements
+
+---
+
+## 🛠️ Built With
+
+- React
+- Vite
+- JavaScript (ES6+)
+- HTML5
+- CSS3
+
+---
+
+## 📚 What I Learned
+
+This project helped me gain hands-on experience with:
+
+- Functional React components
+- JSX
+- Props
+- State management using `useState`
+- Conditional rendering
+- Event handling
+- Working with arrays and objects
+- Rendering lists with `map()`
+- Derived state
+- Accessibility (a11y) improvements
+- Component-based architecture
+
+---
+
+## 📦 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/vigneshblue/scrimba-react-assembly-end-game.git
+```
+
+Navigate to the project
+
+```bash
+cd scrimba-react-assembly-end-game
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start the development server
+
+```bash
+npm run dev
+```
+
+Open your browser at
+
+```
+http://localhost:5173
+```
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+├── components/
+├── assets/
+├── App.jsx
+├── main.jsx
+└── ...
+```
+
+---
+
+## 🎓 Course
+
+This project was created while following the **Learn React** course by Scrimba.
+
+Course:
+https://scrimba.com/learn-react-c0e
+
+The course contains 170+ interactive coding challenges and multiple projects, with **Assembly: Endgame** serving as the final capstone project that combines React concepts into a complete application. :contentReference[oaicite:0]{index=0}
+
+---
+
+## 🙏 Acknowledgements
+
+Special thanks to **Bob Ziroll** and **Scrimba** for creating an excellent interactive React course that emphasizes learning by building real projects. :contentReference[oaicite:1]{index=1}
+
+---
+
+## 📄 License
+
+This project is intended for learning purposes.
