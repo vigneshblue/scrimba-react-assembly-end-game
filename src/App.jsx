@@ -9,7 +9,7 @@ function App() {
   const [currentWord, setCurrentWord] = useState(() => randomWord())
   const [guessedLetters, setGuessedLetters] = useState([])
   // Static values
-  const alphabets = "abcdefghijklmnopqrstuwxyz"
+  const alphabets = "abcdefghijklmnopqrstuvwxyz"
   // Derived values
   const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
   const isGameWon = [...currentWord].every(letter => guessedLetters.includes(letter))
